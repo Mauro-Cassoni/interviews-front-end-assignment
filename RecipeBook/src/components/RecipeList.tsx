@@ -24,7 +24,12 @@ const RecipeList: React.FC = () => {
     return (
         <ul>
             {recipes.map((recipe) => (
-                <li key={recipe.id}>{recipe.name}</li>
+                <div key={recipe.id}
+                    className=''>
+                    <img src={`http://localhost:8080${recipe.image}`} alt={recipe.name} />
+                    <h3>{recipe.name}</h3>
+                    <p></p>
+                </div>
             ))}
         </ul>
     );

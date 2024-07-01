@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+// theme
+
+:root{
+    --bg: #171614;
+    --primary: #eabc27;
+    --primary-hover: #ead027;
+    --text: #e9e1d9;
+}
+
+// generic
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
