@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+// theme
+
+:root{
+    --bg: #171614;
+    --primary: #eabc27;
+    --primary-hover: #ead027;
+    --card: #282827;
+    --text: #e9e1d9;
+}
+
+// generic
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+h1{
+    font-size: 2rem;
+}
+
+h2{
+    font-size: 1.7rem;
+}
+
+h3{
+    font-size: 1.4rem;
+}
+
+// card
+
+.card {
+    background-color: var(--card);
+    border-radius: 15px;
+
+    h2,h3{
+        color: var(--primary-hover);
+    }
+
+    .image{
+        height: 300px;
+        width: 300px;
+        border-radius: 15px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    span{
+        color: var(--primary);
+    }
+}
