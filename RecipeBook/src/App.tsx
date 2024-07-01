@@ -10,7 +10,7 @@ function App() {
         <Navbar />
       </header>
 
-      <main>
+      <main className=''>
         <RecipeList />
       </main>
     </>
