@@ -12,6 +12,14 @@ const selectFilteredRecipes = createSelector(
     (recipes, id) => recipes.filter(recipe => recipe.difficultyId === id)
 );
 
+const truncateText = (text: string, maxLength: number): string => {
+    if (text.length <= maxLength) {
+        return text;
+    } else {
+        return text.slice(0, maxLength) + "...";
+    }
+};
+
 const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
     const dispatch: AppDispatch = useDispatch();
 
@@ -45,14 +53,14 @@ const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div className="slider">
-            <h2>{name} Recipes</h2>
+        <div className="slider mb-14">
+            <h2 className="my-3 text-center">{name} Recipes</h2>
             <Slider {...settings}>
                 {recipes.map((recipe: iRecipe) => (
                     <div key={recipe.id}>
                         <div className="image" style={{ backgroundImage: `url(http://localhost:8080${recipe.image})` }}>
                             <div className="bg" />
-                            <h2 className="name">{recipe.name}</h2>
+                            <h2 className="name">{truncateText(recipe.name, 19)}</h2>
                         </div>
                     </div>
                 ))}
