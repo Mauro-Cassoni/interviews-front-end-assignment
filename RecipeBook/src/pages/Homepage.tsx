@@ -27,7 +27,7 @@ export const Homepage: React.FC = () => {
 
 
     return (
-        <div>
+        <div className="max-w-[1920px] w-[90svw] m-auto">
             {difficulties.map((difficulty) => (
                 <div key={difficulty.id}>
                     <Carousel id={difficulty.id} name={difficulty.name} />

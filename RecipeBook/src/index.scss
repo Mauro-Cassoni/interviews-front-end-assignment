@@ -19,7 +19,9 @@ body {
 }
 
 
-h1,h2,h3 {
+h1,
+h2,
+h3 {
     color: var(--primary-hover);
 }
 
@@ -56,11 +58,68 @@ h3 {
 
 // Slider
 .slider {
+
     .image {
-        height: 500px;
-        // width: 500px;
+
+        height: 250px;
+        width: 250px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        position: relative;
+        margin: auto;
+        border-radius: 15px;
+
+        &:hover {
+            .bg {
+                opacity: 96%;
+            }
+        }
+
+        @media (min-width:425px) {
+            height: 300px;
+            width: 300px;
+        }
+
+        @media (min-width:768px) {
+            height: 230px;
+            width: 230px;
+        }
+
+        @media (min-width:1024px) {
+            height: 300px;
+            width: 300px;
+        }
+
+        @media (min-width:1440px) {
+            height: 400px;
+            width: 400px;
+        }
+
+        @media (min-width:1700px) {
+            height: 500px;
+            width: 500px;
+        }
+
+        .bg {
+            transition: 0.5s;
+            background-color: var(--bg);
+            opacity: 80%;
+            position: absolute;
+            height: 40%;
+            width: 100%;
+            top: 30%;
+        }
+
+        .name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-hover);
+        }
     }
 }

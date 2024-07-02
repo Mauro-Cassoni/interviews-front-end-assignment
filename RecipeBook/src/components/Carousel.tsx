@@ -29,8 +29,16 @@ const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: true, 
-        autoplaySpeed: 4000, 
+        autoplay: true,
+        autoplaySpeed: 4000,
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                },
+            }
+        ],
     };
 
     if (loading) return <div>Loading...</div>;
@@ -41,9 +49,11 @@ const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
             <h2>{name} Recipes</h2>
             <Slider {...settings}>
                 {recipes.map((recipe: iRecipe) => (
-                    <div key={recipe.id} className="slide">
-                        <div className="image" style={{ backgroundImage: `url(http://localhost:8080${recipe.image})` }}></div>
-                        <h3>{recipe.name}</h3>
+                    <div key={recipe.id}>
+                        <div className="image" style={{ backgroundImage: `url(http://localhost:8080${recipe.image})` }}>
+                            <div className="bg" />
+                            <h2 className="name">{recipe.name}</h2>
+                        </div>
                     </div>
                 ))}
             </Slider>
