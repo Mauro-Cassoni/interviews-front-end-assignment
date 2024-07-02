@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 // Theme
-:root{
+:root {
     --bg: #171614;
     --primary: #eabc27;
     --primary-hover: #ead027;
@@ -18,15 +18,20 @@ body {
     color: var(--text);
 }
 
-h1{
+
+h1,h2,h3 {
+    color: var(--primary-hover);
+}
+
+h1 {
     font-size: 2rem;
 }
 
-h2{
+h2 {
     font-size: 1.7rem;
 }
 
-h3{
+h3 {
     font-size: 1.4rem;
 }
 
@@ -35,11 +40,7 @@ h3{
     background-color: var(--card);
     border-radius: 15px;
 
-    h2,h3{
-        color: var(--primary-hover);
-    }
-
-    .image{
+    .image {
         height: 300px;
         width: 300px;
         border-radius: 15px;
@@ -48,7 +49,18 @@ h3{
         background-size: cover;
     }
 
-    span{
+    span {
         color: var(--primary);
+    }
+}
+
+// Slider
+.slider {
+    .image {
+        height: 500px;
+        // width: 500px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }

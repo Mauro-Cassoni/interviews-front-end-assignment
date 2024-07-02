@@ -1,13 +1,21 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { iCuisine } from "../store/slices/cuisineSlice";
+import { createSelector } from "reselect";
 import { fetchRecipes, iRecipe, selectError, selectLoading, selectRecipes } from "../store/slices/recipeSlice";
 import { AppDispatch, RootState } from "../store/store";
 import Slider from "react-slick";
+import { iDifficulty } from "../store/slices/difficultySlice";
 
-const CuisineCarousel: React.FC<iCuisine> = ({ id, name }) => {
+const selectFilteredRecipes = createSelector(
+    (state: RootState) => selectRecipes(state),
+    (_: RootState, id: number) => id,
+    (recipes, id) => recipes.filter(recipe => recipe.difficultyId === id)
+);
+
+const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
     const dispatch: AppDispatch = useDispatch();
-    const recipes = useSelector((state: RootState) => selectRecipes(state).filter(recipe => recipe.id === id));
+
+    const recipes = useSelector((state: RootState) => selectFilteredRecipes(state, id));
     const loading = useSelector(selectLoading);
     const error = useSelector(selectError);
 
@@ -19,22 +27,23 @@ const CuisineCarousel: React.FC<iCuisine> = ({ id, name }) => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
+        slidesToShow: 3,
         slidesToScroll: 1,
+        autoplay: true, 
+        autoplaySpeed: 4000, 
     };
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div>
+        <div className="slider">
             <h2>{name} Recipes</h2>
             <Slider {...settings}>
                 {recipes.map((recipe: iRecipe) => (
-                    <div key={recipe.id}>
-                        <img src={recipe.image} alt={recipe.name} />
+                    <div key={recipe.id} className="slide">
+                        <div className="image" style={{ backgroundImage: `url(http://localhost:8080${recipe.image})` }}></div>
                         <h3>{recipe.name}</h3>
-                        <p>{recipe.ingredients.join(', ')}</p>
                     </div>
                 ))}
             </Slider>
@@ -42,4 +51,4 @@ const CuisineCarousel: React.FC<iCuisine> = ({ id, name }) => {
     );
 };
 
-export default CuisineCarousel;
+export default Carousel;
