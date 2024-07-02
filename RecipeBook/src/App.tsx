@@ -1,20 +1,24 @@
-import './App.scss'
-import Navbar from './components/Navbar'
-import RecipeList from './components/RecipeList'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.scss';
+import Navbar from './components/Navbar';
+import Homepage from './pages/Homepage';
 
 function App() {
-
   return (
-    <>
-      <header>
-        <Navbar />
-      </header>
+    <Router>
+      <div>
+        <header>
+          <Navbar />
+        </header>
 
-      <main className=''>
-        <RecipeList />
-      </main>
-    </>
-  )
+        <main>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
