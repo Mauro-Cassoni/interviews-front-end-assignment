@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { AppThunk } from "../store";
 
-export interface Recipe {
+export interface iRecipe {
     id: number;
     name: string;
     ingredients: string[];
@@ -13,13 +13,13 @@ export interface Recipe {
     image: string
 }
 
-export interface RecipeState {
-    recipes: Recipe[];
+export interface iRecipeState {
+    recipes: iRecipe[];
     loading: boolean;
     error: string | null;
 }
 
-const initialState: RecipeState = {
+const initialState: iRecipeState = {
     recipes: [],
     loading: false,
     error: null,
@@ -33,7 +33,7 @@ export const recipeSlice = createSlice({
             state.loading = true;
             state.error = null;
         },
-        fetchRecipesSuccess(state, action: PayloadAction<Recipe[]>) {
+        fetchRecipesSuccess(state, action: PayloadAction<iRecipe[]>) {
             state.recipes = action.payload;
             state.loading = false;
         },
@@ -47,7 +47,7 @@ export const recipeSlice = createSlice({
 export const fetchRecipes = (): AppThunk => async (dispatch) => {
     try {
         dispatch(fetchRecipesStart());
-        const response = await axios.get<Recipe[]>("http://localhost:8080/recipes");
+        const response = await axios.get<iRecipe[]>("http://localhost:8080/recipes");
         dispatch(fetchRecipesSuccess(response.data));
     } catch (error) {
         if (axios.isAxiosError(error))
@@ -55,9 +55,9 @@ export const fetchRecipes = (): AppThunk => async (dispatch) => {
     }
 };
 
-export const selectRecipes = (state: { recipes: RecipeState }) => state.recipes.recipes;
-export const selectLoading = (state: { recipes: RecipeState }) => state.recipes.loading;
-export const selectError = (state: { recipes: RecipeState }) => state.recipes.error;
+export const selectRecipes = (state: { recipes: iRecipeState }) => state.recipes.recipes;
+export const selectLoading = (state: { recipes: iRecipeState }) => state.recipes.loading;
+export const selectError = (state: { recipes: iRecipeState }) => state.recipes.error;
 
 export const { fetchRecipesStart, fetchRecipesSuccess, fetchRecipesFailure } = recipeSlice.actions;
 

@@ -1,9 +1,9 @@
+// Tailwind
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// theme
-
+// Theme
 :root{
     --bg: #171614;
     --primary: #eabc27;
@@ -12,8 +12,7 @@
     --text: #e9e1d9;
 }
 
-// generic
-
+// Generic
 body {
     background-color: var(--bg);
     color: var(--text);
@@ -31,8 +30,7 @@ h3{
     font-size: 1.4rem;
 }
 
-// card
-
+// Card
 .card {
     background-color: var(--card);
     border-radius: 15px;
