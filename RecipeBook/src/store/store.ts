@@ -1,9 +1,11 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 import { recipesReducer } from './slices/recipeSlice';
+import { cuisinesReducer } from "./slices/cuisineSlice";
 
 const store = configureStore({
     reducer: {
         recipes: recipesReducer,
+        cuisines: cuisinesReducer
     },
 });
 

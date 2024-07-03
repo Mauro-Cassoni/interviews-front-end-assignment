@@ -1,56 +1,185 @@
+// Tailwind
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// theme
+//Fonts 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
 
-:root{
+// Theme
+:root {
     --bg: #171614;
     --primary: #eabc27;
-    --primary-hover: #ead027;
+    --primary-hover: #f6dc31;
     --card: #282827;
     --text: #e9e1d9;
 }
 
-// generic
-
+// Generic
 body {
     background-color: var(--bg);
     color: var(--text);
+    font-family: "Exo 2", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1{
+h1,
+h2,
+h3 {
+    color: var(--primary-hover);
+    font-family: "Space Grotesk", sans-serif;
+}
+
+h1 {
     font-size: 2rem;
 }
 
-h2{
+h2 {
     font-size: 1.7rem;
 }
 
-h3{
+h3 {
     font-size: 1.4rem;
 }
 
-// card
+// Navbar 
+.navbar {
+    & li {
+        cursor: pointer;
 
+        &:hover {
+            color: var(--primary-hover);
+        }
+    }
+
+    & li.active {
+        border-bottom: 2px solid var(--primary);
+    }
+}
+
+// Card
 .card {
     background-color: var(--card);
     border-radius: 15px;
 
-    h2,h3{
-        color: var(--primary-hover);
-    }
-
-    .image{
-        height: 300px;
-        width: 300px;
+    .image {
+        height: 230px;
+        width: 230px;
         border-radius: 15px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+
+        @media (min-width: 375px) {
+            height: 270px;
+            width: 270px;
+        }
+
+        @media (min-width: 425px) {
+            height: 300px;
+            width: 300px;
+        }
     }
 
-    span{
+    span {
         color: var(--primary);
+    }
+}
+
+// Slider
+.slider {
+
+    .image {
+
+        transition: 0.5s;
+        height: 250px;
+        width: 250px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        margin: auto;
+        border-radius: 15px;
+
+        &:hover {
+            transform: scale(1.2);
+
+            .bg {
+                opacity: 97%;
+            }
+
+            .name {
+                color: var(--primary-hover);
+            }
+        }
+
+        @media (min-width:425px) {
+            height: 300px;
+            width: 300px;
+        }
+
+        @media (min-width:768px) {
+            height: 190px;
+            width: 190px;
+        }
+
+        @media (min-width:1024px) {
+            height: 250px;
+            width: 250px;
+        }
+
+        @media (min-width:1440px) {
+            height: 360px;
+            width: 360px;
+        }
+
+        @media (min-width:1700px) {
+            height: 500px;
+            width: 500px;
+        }
+
+        .bg {
+            transition: 0.5s;
+            background-color: var(--bg);
+            opacity: 80%;
+            position: absolute;
+            height: 40%;
+            width: 100%;
+            top: 30%;
+        }
+
+        .name {
+            transition: 0.5s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary);
+
+            @media (min-width:425px) {
+                font-size: 1.6rem;
+            }
+
+            @media (min-width:768px) {
+                font-size: 1.3rem;
+            }
+
+            @media (min-width:1024px) {
+                font-size: 1.5rem;
+            }
+
+            @media (min-width:1440px) {
+                font-size: 2rem;
+            }
+
+            @media (min-width:1700px) {
+                font-size: 2.2rem;
+            }
+        }
     }
 }

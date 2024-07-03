@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecipes, selectRecipes, selectLoading, selectError } from '../store/slices/recipeSlice';
 import { AppDispatch } from '../store/store';
+import Loader from './Loader';
 
 const RecipeList: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -49,7 +50,7 @@ const RecipeList: React.FC = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loader />
     }
 
     if (error) {
@@ -65,7 +66,7 @@ const RecipeList: React.FC = () => {
                         className='image flex-shrink-0'>
                     </div>
                     <div className='flex flex-col flex-grow p-2'>
-                        <div className='text-center mb-4'>
+                        <div className='mb-4'>
                             <h3>{recipe.name}</h3>
                         </div>
                         <div className='flex flex-wrap md:flex-nowrap justify-between'>
