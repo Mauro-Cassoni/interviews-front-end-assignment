@@ -67,7 +67,7 @@ h3 {
 
     .image {
         height: 185px;
-        width: 185px;
+        width: 100%;
         border-radius: 15px;
         background-position: center;
         background-repeat: no-repeat;
@@ -75,26 +75,17 @@ h3 {
 
         @media (min-width: 375px) {
             height: 235px;
-            width: 235px;
         }
 
         @media (min-width: 425px) {
             height: 275px;
-            width: 275px;
         }
 
         @media (min-width: 768px) {
             height: 300px;
-            width: 565px;
-        }
-
-        @media (min-width: 1024px) {
-            height: 300px;
-            width: 785px;
         }
 
         @media (min-width: 1440px) {
-            height: 300px;
             width: 300px;
         }
     }

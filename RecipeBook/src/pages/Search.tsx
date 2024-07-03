@@ -27,7 +27,6 @@ export const Search = () => {
                 },
             });
             setSearchResults(response.data);
-            console.log('Search results:', response.data);
         } catch (error) {
             console.error('Error fetching search results:', error);
         }

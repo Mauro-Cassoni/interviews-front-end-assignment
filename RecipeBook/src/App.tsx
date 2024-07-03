@@ -9,11 +9,14 @@ function App() {
   return (
     <Router>
       <div>
-        <header className='w-full h-[7svh] min-h-10 mb-8'>
+        <header className='w-full h-[7svh] min-h-10 mb-8 fixed top-0 z-10'>
           <Navbar />
         </header>
 
         <main className='w-[85svw] m-auto'>
+          <div className='w-full h-[7svh] min-h-10'>
+
+          </div>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/recipes" element={<Recipes />} />

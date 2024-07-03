@@ -102,6 +102,7 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
                     ))}
                 </select>
 
+
                 <select
                     value={filters.difficultyId || ''}
                     onChange={(e) => setFilters({ ...filters, difficultyId: e.target.value || undefined })}

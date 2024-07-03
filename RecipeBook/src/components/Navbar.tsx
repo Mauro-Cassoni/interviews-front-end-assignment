@@ -30,7 +30,7 @@ export default function Navbar() {
 
     return (
         <div className="h-full w-full flex flex-col items-center">
-            <ul className="navbar flex gap-5 px-10 py-5 w-full border-b-2 border-[var(--primary)]">
+            <ul className="navbar flex gap-5 px-10 py-5 w-full border-b-2 border-[var(--primary)] bg-[var(--bg)]">
                 <li className={isActive('/')}>
                     <Link to={'/'}>RecipeBook</Link>
                 </li>
