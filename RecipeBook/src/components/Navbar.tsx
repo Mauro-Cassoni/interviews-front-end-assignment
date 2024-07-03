@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
 
 export default function Navbar() {
     const location = useLocation();
@@ -20,13 +21,15 @@ export default function Navbar() {
                 return 'RecipeBook';
             case '/recipes':
                 return 'RecipeBook - Recipes';
+            case '/search':
+                return 'RecipeBook - Search';
             default:
                 return 'RecipeBook';
         }
     };
 
     return (
-        <div className="h-full w-full flex items-center">
+        <div className="h-full w-full flex flex-col items-center">
             <ul className="navbar flex gap-5 px-10 py-5 w-full border-b-2 border-[var(--primary)]">
                 <li className={isActive('/')}>
                     <Link to={'/'}>RecipeBook</Link>
@@ -34,7 +37,10 @@ export default function Navbar() {
                 <li className={isActive('/recipes')}>
                     <Link to={'/recipes'}>Recipes</Link>
                 </li>
+                <li className={isActive('/search')}>
+                    <Link to={'/search'}>Search</Link>
+                </li>
             </ul>
         </div>
-    )
+    );
 }

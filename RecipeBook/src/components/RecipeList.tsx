@@ -61,7 +61,7 @@ const RecipeList: React.FC = () => {
         <div>
             {recipes.map((recipe) => (
                 <div key={recipe.id}
-                    className='card flex flex-wrap md:flex-nowrap gap-2 p-3 m-3'>
+                    className='card flex flex-wrap gap-2 p-3 m-8'>
                     <div style={{ backgroundImage: `url(http://localhost:8080${recipe.image})` }}
                         className='image flex-shrink-0'>
                     </div>
@@ -69,18 +69,18 @@ const RecipeList: React.FC = () => {
                         <div className='mb-4'>
                             <h3>{recipe.name}</h3>
                         </div>
-                        <div className='flex flex-wrap md:flex-nowrap justify-between'>
-                            <div className='flex flex-col mb-4 w-full md:w-1/3'>
+                        <div className='flex flex-wrap justify-between'>
+                            <div className='flex flex-col mb-4 w-full xl:w-1/3'>
                                 <p><span>Diet: </span> {dietMap[recipe.dietId]}</p>
                                 <p><span>Difficulty: </span> {difficultyMap[recipe.difficultyId]}</p>
                             </div>
-                            <div className='flex flex-col mb-4 w-full md:w-1/3'>
+                            <div className='flex flex-col mb-4 w-full xl:w-1/3'>
                                 <span>Ingredients:</span>
                                 {recipe.ingredients.map((ingredient) => (
                                     <li key={Date.now()}>{ingredient}</li>
                                 ))}
                             </div>
-                            <div className='flex flex-col mb-4 w-full md:w-1/3'>
+                            <div className='flex flex-col mb-4 w-full xl:w-1/3'>
                                 <span>Instructions:</span>
                                 <p>{recipe.instructions}</p>
                             </div>
