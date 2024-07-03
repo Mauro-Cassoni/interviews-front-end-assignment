@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export interface iDifficulty {
     id: number;
@@ -22,7 +23,7 @@ export const fetchDifficulties = createAsyncThunk<iDifficulty[], void, { rejectV
     'difficulties/fetchDifficulties',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get<iDifficulty[]>('http://localhost:8080/difficulties');
+            const response = await axios.get<iDifficulty[]>(`${apiBaseUrl}/difficulties`);
             return response.data;
         } catch (error) {
             if (axios.isAxiosError(error)) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { iRecipe } from '../store/slices/recipeSlice';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 interface SearchResultsProps {
     recipes: iRecipe[];
@@ -13,7 +14,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ recipes, dietMap, difficu
             {recipes.map((recipe) => (
                 <div key={recipe.id}
                     className='card flex flex-wrap gap-2 p-3 m-8'>
-                    <div style={{ backgroundImage: `url(http://localhost:8080${recipe.image})` }}
+                    <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }}
                         className='image flex-shrink-0'>
                     </div>
                     <div className='flex flex-col flex-grow p-2'>

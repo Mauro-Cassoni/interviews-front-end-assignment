@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 interface Cuisine {
     id: string;
@@ -37,9 +38,9 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
         const fetchData = async () => {
             try {
                 const [cuisinesRes, dietsRes, difficultiesRes] = await Promise.all([
-                    axios.get('http://localhost:8080/cuisines'),
-                    axios.get('http://localhost:8080/diets'),
-                    axios.get('http://localhost:8080/difficulties'),
+                    axios.get(`${apiBaseUrl}/cuisines`),
+                    axios.get(`${apiBaseUrl}/diets`),
+                    axios.get(`${apiBaseUrl}/difficulties`),
                 ]);
 
                 setCuisines(cuisinesRes.data);

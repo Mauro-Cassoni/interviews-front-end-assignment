@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecipes, selectRecipes, selectLoading, selectError } from '../store/slices/recipeSlice';
 import { AppDispatch } from '../store/store';
 import Loader from './Loader';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const RecipeList: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -23,7 +24,7 @@ const RecipeList: React.FC = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/diets')
+        fetch(`${apiBaseUrl}/diets`)
             .then(response => response.json())
             .then(data => {
                 const map: { [key: string]: string } = {};
@@ -37,7 +38,7 @@ const RecipeList: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/difficulties')
+        fetch(`${apiBaseUrl}/difficulties`)
             .then(response => response.json())
             .then(data => {
                 const map: { [key: string]: string } = {};
@@ -62,7 +63,7 @@ const RecipeList: React.FC = () => {
             {recipes.map((recipe) => (
                 <div key={recipe.id}
                     className='card flex flex-wrap gap-2 p-3 m-8'>
-                    <div style={{ backgroundImage: `url(http://localhost:8080${recipe.image})` }}
+                    <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }}
                         className='image flex-shrink-0'>
                     </div>
                     <div className='flex flex-col flex-grow p-2'>
