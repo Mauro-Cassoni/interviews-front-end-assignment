@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecipes, selectRecipes, selectLoading, selectError } from '../store/slices/recipeSlice';
 import { AppDispatch } from '../store/store';
 import Loader from './Loader';
+import { v4 as uuidv4 } from 'uuid';
+
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const RecipeList: React.FC = () => {
@@ -78,7 +80,7 @@ const RecipeList: React.FC = () => {
                             <div className='flex flex-col mb-4 w-full xl:w-1/3'>
                                 <span>Ingredients:</span>
                                 {recipe.ingredients.map((ingredient) => (
-                                    <li key={Date.now()}>{ingredient}</li>
+                                    <li key={uuidv4()}>{ingredient}</li>
                                 ))}
                             </div>
                             <div className='flex flex-col mb-4 w-full xl:w-1/3'>
