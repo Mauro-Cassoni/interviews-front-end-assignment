@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Carousel from "../components/Carousel";
 import axios from "axios";
 import { iDifficulty } from "../store/slices/difficultySlice";
+import Loader from "../components/Loader";
 
 export const Homepage: React.FC = () => {
     const [difficulties , setDifficulties ] = useState<iDifficulty[]>([]);
@@ -22,7 +23,7 @@ export const Homepage: React.FC = () => {
         fetchCuisines();
     }, [])
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loader />
     if (error) return <div>Error: {error}</div>;
 
 

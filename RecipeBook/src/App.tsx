@@ -8,11 +8,11 @@ function App() {
   return (
     <Router>
       <div>
-        <header className='w-full h-[7svh] min-h-10'>
+        <header className='w-full h-[7svh] min-h-10 mb-8'>
           <Navbar />
         </header>
 
-        <main className='w-[90svw] m-auto'>
+        <main className='w-[85svw] m-auto'>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/recipes" element={<Recipes />} />

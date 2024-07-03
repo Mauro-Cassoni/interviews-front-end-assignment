@@ -5,6 +5,7 @@ import { fetchRecipes, iRecipe, selectError, selectLoading, selectRecipes } from
 import { AppDispatch, RootState } from "../store/store";
 import Slider from "react-slick";
 import { iDifficulty } from "../store/slices/difficultySlice";
+import Loader from "./Loader";
 
 const selectFilteredRecipes = createSelector(
     (state: RootState) => selectRecipes(state),
@@ -49,7 +50,7 @@ const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
         ],
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loader />
     if (error) return <div>Error: {error}</div>;
 
     return (

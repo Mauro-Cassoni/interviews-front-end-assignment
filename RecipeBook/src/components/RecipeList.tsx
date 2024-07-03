@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecipes, selectRecipes, selectLoading, selectError } from '../store/slices/recipeSlice';
 import { AppDispatch } from '../store/store';
+import Loader from './Loader';
 
 const RecipeList: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -49,7 +50,7 @@ const RecipeList: React.FC = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loader />
     }
 
     if (error) {
