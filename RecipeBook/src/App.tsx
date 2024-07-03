@@ -3,6 +3,7 @@ import './App.scss';
 import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
 import { Recipes } from './pages/Recipes';
+import { Search } from './pages/Search';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/recipes" element={<Recipes />} />
+            <Route path="/search" element={<Search />} />
           </Routes>
         </main>
       </div>
