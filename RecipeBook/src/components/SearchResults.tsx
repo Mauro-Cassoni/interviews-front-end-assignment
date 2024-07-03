@@ -79,7 +79,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ recipes }) => {
                         </div>
                         <div className='flex flex-wrap justify-between'>
                             <div className='flex flex-col mb-4 w-full xl:w-1/3'>
-                                <p><span>Cuisine: </span> {loadedCuisineMap[recipe.difficultyId]}</p>
+                                <p><span>Cuisine: </span> {loadedCuisineMap[recipe.cuisineId]}</p>
                                 <p><span>Diet: </span> {loadedDietMap[recipe.dietId]}</p>
                                 <p><span>Difficulty: </span> {loadedDifficultyMap[recipe.difficultyId]}</p>
                             </div>
