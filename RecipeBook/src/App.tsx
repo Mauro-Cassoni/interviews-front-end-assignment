@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import { Recipes } from './pages/Recipes';
 import { Search } from './pages/Search';
 import NavbarMobile from './components/NavbarMobile';
+import { Account } from './pages/Account';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/recipes" element={<Recipes />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/account" element={<Account />} />
           </Routes>
 
           <div className='w-full h-[8svh] min-h-10 mt-8 md:hidden' />
