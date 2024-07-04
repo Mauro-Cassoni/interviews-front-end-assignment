@@ -3,6 +3,8 @@ import axios from 'axios';
 import SearchAndFilter from '../components/SearchAndFilter';
 import { iRecipe } from '../store/slices/recipeSlice';
 import SearchResults from '../components/SearchResults';
+import RecipeList from '../components/RecipeList';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export const Search = () => {
     const [searchResults, setSearchResults] = useState<iRecipe[]>([]);
@@ -17,7 +19,7 @@ export const Search = () => {
 
     const handleSearch = async (query: string, filters: Filters) => {
         try {
-            const response = await axios.get('http://localhost:8080/recipes', {
+            const response = await axios.get(`${apiBaseUrl}/recipes`, {
                 params: {
                     q: query,
                     cuisineId: filters.cuisineId,
@@ -26,14 +28,13 @@ export const Search = () => {
                 },
             });
             setSearchResults(response.data);
-            console.log('Search results:', response.data);
         } catch (error) {
             console.error('Error fetching search results:', error);
         }
     };
 
     useEffect(() => {
-        fetch('http://localhost:8080/diets')
+        fetch('${apiBaseUrl}/diets')
             .then(response => response.json())
             .then(data => {
                 const map: { [key: string]: string } = {};
@@ -46,7 +47,7 @@ export const Search = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:8080/difficulties')
+        fetch('${apiBaseUrl}/difficulties')
             .then(response => response.json())
             .then(data => {
                 const map: { [key: string]: string } = {};
@@ -61,8 +62,14 @@ export const Search = () => {
     return (
         <div>
             <div>
+                <div>
+                    <h2 className="mb-4 text-center font-bold border-b-2 border-[var(--primary)]">Search</h2>
+                </div>
                 <SearchAndFilter onSearch={handleSearch} />
                 <SearchResults recipes={searchResults} dietMap={dietMap} difficultyMap={difficultyMap} />
+            </div>
+            <div>
+                {searchResults.length === 0 && <RecipeList />}
             </div>
         </div>
     );

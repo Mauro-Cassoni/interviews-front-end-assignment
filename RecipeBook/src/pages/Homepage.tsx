@@ -3,6 +3,7 @@ import Carousel from "../components/Carousel";
 import axios from "axios";
 import { iDifficulty } from "../store/slices/difficultySlice";
 import Loader from "../components/Loader";
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export const Homepage: React.FC = () => {
     const [difficulties , setDifficulties ] = useState<iDifficulty[]>([]);
@@ -12,7 +13,7 @@ export const Homepage: React.FC = () => {
     useEffect(() => {
         const fetchCuisines = async () => {
             try {
-                const response = await axios.get<iDifficulty[]>("http://localhost:8080/difficulties");
+                const response = await axios.get<iDifficulty[]>(`${apiBaseUrl}/difficulties`);
                 setDifficulties(response.data);
                 setLoading(false);
             } catch {

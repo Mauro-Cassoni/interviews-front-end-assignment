@@ -2,23 +2,22 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeButton from './ThemeButton';
 
-
 const getThemeFromLocalStorage = () => {
     if (localStorage.getItem('theme')) {
-        return localStorage.getItem('theme')
+        return localStorage.getItem('theme');
     } else {
-        return 'dark-mode'
+        return 'dark-mode';
     }
 }
 
-export default function Navbar() {
+export default function NavbarMobile() {
     const location = useLocation();
     const [activeTab, setActiveTab] = useState('');
     const [theme, setTheme] = useState(getThemeFromLocalStorage());
 
     const changeTheme = () => {
         if (theme === 'dark-mode') {
-            setTheme('light-mode')
+            setTheme('light-mode');
         } else {
             setTheme('dark-mode');
         }
@@ -54,13 +53,16 @@ export default function Navbar() {
     };
 
     return (
-        <div className="h-full w-full flex items-center px-10 py-5 border-b-2 border-[var(--primary)] bg-[var(--bg)] justify-between">
+        <div className="h-full w-full flex items-center px-2 py-5 border-t-2 border-[var(--primary)] bg-[var(--bg)] justify-center relative">
+            <div className='absolute left-[1svw] top-[-93svh]'>
+                <ThemeButton onClick={changeTheme} className='border-[1px] border-[var(--primary)]' />
+            </div>
             <ul className="navbar flex gap-5">
-                <li className={isActive('/')}>
-                    <Link to={'/'}>RecipeBook</Link>
-                </li>
                 <li className={isActive('/recipes')}>
                     <Link to={'/recipes'}>Recipes</Link>
+                </li>
+                <li className={isActive('/')}>
+                    <Link to={'/'}>Home</Link>
                 </li>
                 <li className={isActive('/search')}>
                     <Link to={'/search'}>Search</Link>
@@ -68,9 +70,6 @@ export default function Navbar() {
                 <li className='self-end'>
                 </li>
             </ul>
-            <div className=''>
-                <ThemeButton onClick={changeTheme} />
-            </div>
         </div>
     );
 }

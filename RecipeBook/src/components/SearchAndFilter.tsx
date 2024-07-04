@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 interface Cuisine {
     id: string;
@@ -37,9 +38,9 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
         const fetchData = async () => {
             try {
                 const [cuisinesRes, dietsRes, difficultiesRes] = await Promise.all([
-                    axios.get('http://localhost:8080/cuisines'),
-                    axios.get('http://localhost:8080/diets'),
-                    axios.get('http://localhost:8080/difficulties'),
+                    axios.get(`${apiBaseUrl}/cuisines`),
+                    axios.get(`${apiBaseUrl}/diets`),
+                    axios.get(`${apiBaseUrl}/difficulties`),
                 ]);
 
                 setCuisines(cuisinesRes.data);
@@ -65,20 +66,20 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
     }, [query, filters]);
 
     return (
-        <div className="search-and-filter flex flex-wrap gap-4 p-4">
+        <div className="search-and-filter flex flex-wrap gap-4 py-4 mb-[-16px] ">
             <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search recipes..."
-                className="p-2 border rounded"
+                className="custom-select"
             />
 
             <div className="flex flex-wrap gap-4">
                 <select
                     value={filters.cuisineId || ''}
                     onChange={(e) => setFilters({ ...filters, cuisineId: e.target.value || undefined })}
-                    className="p-2 border rounded"
+                    className="custom-select"
                 >
                     <option value="">All Cuisines</option>
                     {cuisines.map((cuisine) => (
@@ -91,7 +92,7 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
                 <select
                     value={filters.dietId || ''}
                     onChange={(e) => setFilters({ ...filters, dietId: e.target.value || undefined })}
-                    className="p-2 border rounded"
+                    className="custom-select"
                 >
                     <option value="">All Diets</option>
                     {diets.map((diet) => (
@@ -104,7 +105,7 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
                 <select
                     value={filters.difficultyId || ''}
                     onChange={(e) => setFilters({ ...filters, difficultyId: e.target.value || undefined })}
-                    className="p-2 border rounded"
+                    className="custom-select"
                 >
                     <option value="">All Difficulties</option>
                     {difficulties.map((difficulty) => (

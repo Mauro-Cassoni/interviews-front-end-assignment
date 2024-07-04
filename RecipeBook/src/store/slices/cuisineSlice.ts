@@ -1,5 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 
 export interface iCuisine {
@@ -23,7 +24,7 @@ export const fetchCuisines = createAsyncThunk<iCuisine[], void, { rejectValue: s
     'cuisines/fetchCuisines',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get<iCuisine[]>('http://localhost:8080/cuisines');
+            const response = await axios.get<iCuisine[]>(`${apiBaseUrl}/cuisines`);
             return response.data;
         } catch (error) {
             if (axios.isAxiosError(error)) {

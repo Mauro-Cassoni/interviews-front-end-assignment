@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { AppThunk } from "../store";
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export interface iRecipe {
     id: number;
@@ -47,7 +48,7 @@ export const recipeSlice = createSlice({
 export const fetchRecipes = (): AppThunk => async (dispatch) => {
     try {
         dispatch(fetchRecipesStart());
-        const response = await axios.get<iRecipe[]>("http://localhost:8080/recipes");
+        const response = await axios.get<iRecipe[]>(`${apiBaseUrl}/recipes`);
         dispatch(fetchRecipesSuccess(response.data));
     } catch (error) {
         if (axios.isAxiosError(error))
