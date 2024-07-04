@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRecipes, selectRecipes, selectLoading, selectError } from '../store/slices/recipeSlice';
+import { fetchRecipes, selectRecipes, selectLoading, selectError, setCurrentPage, selectCurrentPage, selectTotalPages } from '../store/slices/recipeSlice';
 import { AppDispatch } from '../store/store';
 import Loader from './Loader';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,11 +12,12 @@ const RecipeList: React.FC = () => {
     const recipes = useSelector(selectRecipes);
     const loading = useSelector(selectLoading);
     const error = useSelector(selectError);
+    const currentPage = useSelector(selectCurrentPage);
+    const totalPages = useSelector(selectTotalPages);
+    const recipesPerPage = 10;
 
     const [dietMap, setDietMap] = useState<{ [key: string]: string }>({});
     const [difficultyMap, setDifficultyMap] = useState<{ [key: string]: string }>({});
-    const [currentPage, setCurrentPage] = useState(1);
-    const recipesPerPage = 10;
 
     const formatDietName = (name: string): string => {
         const parts = name.split('-').map((part, index) => index === 0 ? part.trim() : part.trim().toLowerCase());
@@ -24,8 +25,8 @@ const RecipeList: React.FC = () => {
     };
 
     useEffect(() => {
-        dispatch(fetchRecipes());
-    }, [dispatch]);
+        dispatch(fetchRecipes(currentPage, recipesPerPage));
+    }, [dispatch, currentPage]);
 
     useEffect(() => {
         fetch(`${apiBaseUrl}/diets`)
@@ -54,20 +55,17 @@ const RecipeList: React.FC = () => {
             .catch(error => console.error('Error fetching difficulties:', error));
     }, []);
 
-    const indexOfLastRecipe = currentPage * recipesPerPage;
-    const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-    const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
-    const totalPages = Math.ceil(recipes.length / recipesPerPage);
-
     const nextPage = () => {
         if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
+            dispatch(setCurrentPage(currentPage + 1));
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }
     };
 
     const prevPage = () => {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
+            dispatch(setCurrentPage(currentPage - 1));
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }
     };
 
@@ -81,7 +79,7 @@ const RecipeList: React.FC = () => {
 
     return (
         <div>
-            {currentRecipes.map((recipe) => (
+            {recipes.map((recipe) => (
                 <div key={recipe.id} className='card flex flex-wrap gap-2 p-3 my-8'>
                     <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }} className='image flex-shrink-0'></div>
                     <div className='flex flex-col flex-grow p-2'>
@@ -109,11 +107,11 @@ const RecipeList: React.FC = () => {
             ))}
             <div className='pagination flex justify-center my-4'>
                 <button onClick={prevPage} disabled={currentPage === 1} className='button'>
-                    PREVIOUS
+                    Previous
                 </button>
                 <span className='px-4 py-2 mx-2'>{currentPage} / {totalPages}</span>
                 <button onClick={nextPage} disabled={currentPage === totalPages} className='button'>
-                    NEXT
+                    Next
                 </button>
             </div>
         </div>

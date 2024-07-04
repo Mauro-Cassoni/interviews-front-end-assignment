@@ -11,9 +11,12 @@ interface SearchResultsProps {
 }
 
 const SearchResults: React.FC<SearchResultsProps> = ({ recipes }) => {
+    const [page, setPage] = useState(1);
     const [loadedDifficultyMap, setLoadedDifficultyMap] = useState<{ [key: string]: string }>({});
     const [loadedDietMap, setLoadedDietMap] = useState<{ [key: string]: string }>({});
     const [loadedCuisineMap, setLoadedCuisineMap] = useState<{ [key: string]: string }>({});
+
+    const resultsPerPage = 10;
 
     const formatDietName = (name: string): string => {
         const parts = name.split('-').map((part, index) => index === 0 ? part.trim() : part.trim().toLowerCase());
@@ -31,7 +34,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ recipes }) => {
                 setLoadedDifficultyMap(newDifficultyMap);
             })
             .catch(error => {
-                console.error('Errore nel caricamento dei dati di difficoltà:', error);
+                console.error('Error loading difficulty data:', error);
             });
     }, []);
 
@@ -46,7 +49,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ recipes }) => {
                 setLoadedCuisineMap(newCuisineMap);
             })
             .catch(error => {
-                console.error('Errore nel caricamento dei dati di difficoltà:', error);
+                console.error('Error loading cuisine data:', error);
             });
     }, []);
 
@@ -61,17 +64,34 @@ const SearchResults: React.FC<SearchResultsProps> = ({ recipes }) => {
                 setLoadedDietMap(newDietsMap);
             })
             .catch(error => {
-                console.error('Errore nel caricamento dei dati di dieta:', error);
+                console.error('Error loading diet data:', error);
             });
     }, []);
 
+    const startIndex = (page - 1) * resultsPerPage;
+    const endIndex = startIndex + resultsPerPage;
+
+    const totalPages = Math.ceil(recipes.length / resultsPerPage);
+
+    const nextPage = () => {
+        if (page < totalPages) {
+            setPage(page + 1);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
+    const prevPage = () => {
+        if (page > 1) {
+            setPage(page - 1);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
     return (
         <div>
-            {recipes.map((recipe) => (
-                <div key={recipe.id}
-                    className='card flex flex-wrap gap-2 p-3 m-8'>
-                    <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }}
-                        className='image flex-shrink-0'>
+            {recipes.slice(startIndex, endIndex).map((recipe) => (
+                <div key={recipe.id} className='card flex flex-wrap gap-2 p-3 m-8'>
+                    <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }} className='image flex-shrink-0'>
                     </div>
                     <div className='flex flex-col flex-grow p-2'>
                         <div className='mb-4'>
@@ -97,6 +117,18 @@ const SearchResults: React.FC<SearchResultsProps> = ({ recipes }) => {
                     </div>
                 </div>
             ))}
+
+            {recipes.length > 0 &&
+                <div className='pagination flex justify-center my-4'>
+                    <button onClick={prevPage} disabled={page === 1} className='button'>
+                        Previous
+                    </button>
+                    <span className='px-4 py-2 mx-2'>{page} / {totalPages}</span>
+                    <button onClick={nextPage} disabled={page === totalPages} className='button'>
+                        Next
+                    </button>
+                </div>
+            }
         </div>
     );
 };
