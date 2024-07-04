@@ -56,7 +56,7 @@ const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
 
     return (
         <div className="slider mb-14">
-            <h2 className="my-3 text-center">{name} Recipes</h2>
+            <h2 className="my-3 text-center font-bold border-b-2 border-[var(--primary)]">{name} Recipes</h2>
             <Slider {...settings}>
                 {recipes.map((recipe: iRecipe) => (
                     <div key={recipe.id}>

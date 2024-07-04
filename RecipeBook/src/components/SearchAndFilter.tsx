@@ -66,20 +66,20 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
     }, [query, filters]);
 
     return (
-        <div className="search-and-filter flex flex-wrap gap-4 p-4">
+        <div className="search-and-filter flex flex-wrap gap-4 py-4 mb-[-16px] ">
             <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search recipes..."
-                className="p-2 border rounded"
+                className="custom-select"
             />
 
             <div className="flex flex-wrap gap-4">
                 <select
                     value={filters.cuisineId || ''}
                     onChange={(e) => setFilters({ ...filters, cuisineId: e.target.value || undefined })}
-                    className="p-2 border rounded"
+                    className="custom-select"
                 >
                     <option value="">All Cuisines</option>
                     {cuisines.map((cuisine) => (
@@ -92,7 +92,7 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
                 <select
                     value={filters.dietId || ''}
                     onChange={(e) => setFilters({ ...filters, dietId: e.target.value || undefined })}
-                    className="p-2 border rounded"
+                    className="custom-select"
                 >
                     <option value="">All Diets</option>
                     {diets.map((diet) => (
@@ -102,11 +102,10 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
                     ))}
                 </select>
 
-
                 <select
                     value={filters.difficultyId || ''}
                     onChange={(e) => setFilters({ ...filters, difficultyId: e.target.value || undefined })}
-                    className="p-2 border rounded"
+                    className="custom-select"
                 >
                     <option value="">All Difficulties</option>
                     {difficulties.map((difficulty) => (

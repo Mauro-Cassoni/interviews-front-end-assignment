@@ -3,6 +3,7 @@ import axios from 'axios';
 import SearchAndFilter from '../components/SearchAndFilter';
 import { iRecipe } from '../store/slices/recipeSlice';
 import SearchResults from '../components/SearchResults';
+import RecipeList from '../components/RecipeList';
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export const Search = () => {
@@ -61,8 +62,14 @@ export const Search = () => {
     return (
         <div>
             <div>
+                <div>
+                    <h2 className="mb-4 text-center font-bold border-b-2 border-[var(--primary)]">Search</h2>
+                </div>
                 <SearchAndFilter onSearch={handleSearch} />
                 <SearchResults recipes={searchResults} dietMap={dietMap} difficultyMap={difficultyMap} />
+            </div>
+            <div>
+                {searchResults.length === 0 && <RecipeList />}
             </div>
         </div>
     );
