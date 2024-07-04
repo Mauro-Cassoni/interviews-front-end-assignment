@@ -1,10 +1,35 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeButton from './ThemeButton';
 
+
+const getThemeFromLocalStorage = () => {
+    if (localStorage.getItem('theme')) {
+        return localStorage.getItem('theme')
+    } else {
+        return 'dark-mode'
+    }
+}
 
 export default function Navbar() {
     const location = useLocation();
     const [activeTab, setActiveTab] = useState('');
+    const [theme, setTheme] = useState(getThemeFromLocalStorage());
+
+    const changeTheme = () => {
+        if (theme === 'dark-mode') {
+            setTheme('light-mode')
+        } else {
+            setTheme('dark-mode');
+        }
+    }
+
+    useEffect(() => {
+        if (theme !== null) {
+            document.documentElement.className = theme;
+            localStorage.setItem('theme', theme);
+        }
+    }, [theme]);
 
     useEffect(() => {
         document.title = getTitleFromPathname(location.pathname);
@@ -29,8 +54,8 @@ export default function Navbar() {
     };
 
     return (
-        <div className="h-full w-full flex flex-col items-center">
-            <ul className="navbar flex gap-5 px-10 py-5 w-full border-b-2 border-[var(--primary)] bg-[var(--bg)]">
+        <div className="h-full w-full flex items-center px-10 py-5 border-b-2 border-[var(--primary)] bg-[var(--bg)] justify-between">
+            <ul className="navbar flex gap-5">
                 <li className={isActive('/')}>
                     <Link to={'/'}>RecipeBook</Link>
                 </li>
@@ -40,7 +65,12 @@ export default function Navbar() {
                 <li className={isActive('/search')}>
                     <Link to={'/search'}>Search</Link>
                 </li>
+                <li className='self-end'>
+                </li>
             </ul>
+            <div className=''>
+                <ThemeButton onClick={changeTheme} />
+            </div>
         </div>
     );
 }
