@@ -60,11 +60,11 @@ export default function NavbarMobile() {
                 <ThemeButton onClick={changeTheme} className='border-[1px] border-[var(--primary)]' />
             </div>
             <ul className="navbar flex gap-5">
-                <li className={isActive('/recipes')}>
-                    <Link to={'/recipes'}>Recipes</Link>
-                </li>
                 <li className={isActive('/')}>
                     <Link to={'/'}>Home</Link>
+                </li>
+                <li className={isActive('/recipes')}>
+                    <Link to={'/recipes'}>Recipes</Link>
                 </li>
                 <li className={isActive('/search')}>
                     <Link to={'/search'}>Search</Link>
