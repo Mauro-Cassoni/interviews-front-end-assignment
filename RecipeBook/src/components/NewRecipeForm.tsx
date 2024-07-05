@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import SuccessMessage from './SuccessMessage';
 const NewRecipeForm: React.FC = () => {
     const [name, setName] = useState<string>('');
     const [ingredients, setIngredients] = useState<string[]>([]);
@@ -13,6 +13,8 @@ const NewRecipeForm: React.FC = () => {
     const [cuisines, setCuisines] = useState<{ id: string; name: string; }[]>([]);
     const [diets, setDiets] = useState<{ id: string; name: string; }[]>([]);
     const [difficulties, setDifficulties] = useState<{ id: string; name: string; }[]>([]);
+
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -61,7 +63,7 @@ const NewRecipeForm: React.FC = () => {
             });
 
             if (response.status === 200 || response.status === 201) {
-                alert('Recipe added successfully!');
+                setShowSuccessMessage(true);
                 setName('');
                 setIngredients([]);
                 setInstructions('');
@@ -89,6 +91,10 @@ const NewRecipeForm: React.FC = () => {
         return name && ingredients.length > 0 && instructions && cuisineId && dietId && difficultyId && image;
     };
 
+    const closeSuccessMessage = () => {
+        setShowSuccessMessage(false);
+    };
+
     return (
         <div className="new-recipe-form">
             <h2 className="my-3 text-center font-bold border-b-2 border-[var(--primary)]">Add New Recipe</h2>
@@ -100,7 +106,12 @@ const NewRecipeForm: React.FC = () => {
 
                 <label>
                     <span>Ingredients*</span>
-                    <textarea value={ingredients.join('\n')} onChange={(e) => setIngredients(e.target.value.split('\n'))} placeholder="Separate ingredients with commas (e.g. Spaghetti, Cheese, Tomato, ...)" required />
+                    <textarea
+                        value={ingredients.join('\n')}
+                        onChange={(e) => setIngredients(e.target.value.split('\n'))}
+                        placeholder="Separate ingredients with commas (e.g. Spaghetti, Cheese, Tomato, ...)"
+                        required
+                    />
                 </label>
 
                 <label>
@@ -143,12 +154,10 @@ const NewRecipeForm: React.FC = () => {
                         <span>Image*</span>
                         <div className='flex items-center'>
                             <div className='buttonImg'>Select Image</div>
-
                             <div className='textImage'>
                                 {image && <span>{image.name}</span>}
                                 {!image && <span>No images selected</span>}
                             </div>
-
                         </div>
                     </label>
                     <input
@@ -166,6 +175,14 @@ const NewRecipeForm: React.FC = () => {
                         disabled={!isFormValid()}>Add Recipe</button>
                 </div>
             </form>
+
+            {showSuccessMessage && (
+                <SuccessMessage
+                    onClose={closeSuccessMessage}
+                    text="Recipe added successfully!"
+                    center={true}
+                />
+            )}
         </div>
     );
 };
