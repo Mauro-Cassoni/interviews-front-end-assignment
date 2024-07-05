@@ -4,6 +4,7 @@ import { fetchRecipes, selectRecipes, selectLoading, selectError, setCurrentPage
 import { AppDispatch } from '../store/store';
 import Loader from './Loader';
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -80,7 +81,7 @@ const RecipeList: React.FC = () => {
     return (
         <div>
             {recipes.map((recipe) => (
-                <div key={recipe.id} className='card flex flex-wrap gap-2 p-3 my-8'>
+                <Link key={recipe.id} to={`/recipes/${recipe.id}`} className='card flex flex-wrap gap-2 p-3 my-8'>
                     <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }} className='image flex-shrink-0'></div>
                     <div className='flex flex-col flex-grow p-2'>
                         <div className='mb-4'>
@@ -103,7 +104,7 @@ const RecipeList: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             ))}
             <div className='pagination flex justify-center my-4'>
                 <button onClick={prevPage} disabled={currentPage === 1} className='button'>

@@ -46,7 +46,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     color: var(--primary-hover);
     font-family: "Space Grotesk", sans-serif;
 }
@@ -61,6 +62,10 @@ h2 {
 
 h3 {
     font-size: 1.4rem;
+}
+
+.underline-title {
+    border-bottom: 2px solid var(--primary-hover);
 }
 
 
@@ -258,7 +263,6 @@ h3 {
 // New Recipe Form
 .new-recipe-form {
     label {
-        .file-label {}
 
         span {
             margin-bottom: 5px;
@@ -289,4 +293,57 @@ h3 {
         border-top-right-radius: 15px;
         border-bottom-right-radius: 15px;
     }
+}
+
+// Recipe Details
+.recipe-details {
+    .name-and-image, .details-section, .comments-section {
+        background-color: var(--card);
+        border-radius: 15px;
+        padding: 32px;
+    }
+
+    .name-and-image {
+        padding-top: 12px;
+    }
+
+    h2 {
+        font-weight: bold;
+    }
+
+    .image {
+        height: 185px;
+        width: 100%;
+        border-radius: 15px;
+        border: 1px solid var(--primary);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @media (min-width: 375px) {
+            height: 235px;
+        }
+
+        @media (min-width: 425px) {
+            height: 275px;
+        }
+
+        @media (min-width: 768px) {
+            height: 300px;
+        }
+    }
+
+    .little-title {
+        font-size: 1.2rem;
+    }
+
+    span {
+        color: var(--primary);
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
 }

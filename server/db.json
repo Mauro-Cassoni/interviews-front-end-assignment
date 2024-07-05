@@ -535,6 +535,13 @@
       "comment": "Fresh and vibrant.",
       "rating": 4,
       "date": "2024-07-02T14:20:00.000Z"
+    },
+    {
+      "id": "19791e25-8a2a-4390-9ec5-b51d6c921bbb",
+      "recipeId": "1",
+      "comment": "",
+      "rating": 3,
+      "date": "2024-07-05T13:41:19.675Z"
     }
   ],
   "cuisines": [

@@ -7,6 +7,7 @@ import { Search } from './pages/Search';
 import NavbarMobile from './components/NavbarMobile';
 import { Account } from './pages/Account';
 import NewRecipeForm from './components/NewRecipeForm';
+import RecipeDetailsPage from './pages/RecipeDetailsPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/account" element={<Account />} />
             <Route path="/account/new-recipe" element={<NewRecipeForm />} />
+            <Route path="/recipes/:recipeId" element={<RecipeDetailsPage />} />
           </Routes>
 
           <div className='w-full h-[8svh] min-h-10 mt-8 md:hidden' />
