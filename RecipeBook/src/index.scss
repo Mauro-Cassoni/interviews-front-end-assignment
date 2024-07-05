@@ -64,7 +64,8 @@ h3 {
 }
 
 
-.button {
+.button,
+.buttonImg {
     transition: 0.5s;
     background-color: var(--primary);
     border-radius: 15px;
@@ -78,6 +79,8 @@ h3 {
 
 // Navbar 
 .navbar {
+    transition: 0.5s;
+
     & li {
         cursor: pointer;
 
@@ -98,7 +101,7 @@ h3 {
     transition: 0.5s;
     border: 0px;
 
-    &:hover{
+    &:hover {
         transform: scale(1.02);
         box-shadow: 0px 0px 10px 4px var(--primary);
     }
@@ -250,4 +253,40 @@ h3 {
         outline: none;
     }
 
+}
+
+// New Recipe Form
+.new-recipe-form {
+    label {
+        .file-label {}
+
+        span {
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea,
+        option,
+        select {
+            color: var(--bg-theme);
+            border-radius: 15px;
+            padding: 10px;
+            border: 1px solid var(--primary);
+        }
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buttonImg {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .textImage {
+        border: 1px solid var(--primary);
+        padding: 9px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
 }

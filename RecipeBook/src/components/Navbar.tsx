@@ -50,6 +50,8 @@ export default function Navbar() {
                 return 'RecipeBook - Search';
             case '/account':
                 return 'RecipeBook - Account';
+            case '/account/new-recipe':
+                return 'RecipeBook - New Recipe';
             default:
                 return 'RecipeBook';
         }

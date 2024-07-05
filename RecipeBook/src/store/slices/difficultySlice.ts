@@ -51,7 +51,7 @@ const difficultySlice = createSlice({
             })
             .addCase(fetchDifficulties.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.error.message || 'Failed to fetch difficulties';
+                state.error = action.error.message || 'something went wrong, try reloading the page';
             });
     }
 });
