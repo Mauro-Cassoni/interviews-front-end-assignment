@@ -389,11 +389,11 @@ h4 {
 }
 
 .stars .filled {
-    color: gold;
+    color: var(--primary);
 }
 
 .stars .empty {
-    color: lightgray;
+    color: var(--bg);
 }
 
 .rating-select {
@@ -402,9 +402,9 @@ h4 {
 }
 
 .rating-select .filled {
-    color: gold;
+    color: var(--primary);
 }
 
 .rating-select .empty {
-    color: lightgray;
+    color: var(--bg);
 }
