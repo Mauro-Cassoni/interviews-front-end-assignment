@@ -4,7 +4,7 @@ export const Account = () => {
     return (
         <div>
             <div>
-                <h2 className="mb-4 text-center font-bold border-b-2 border-[var(--primary)]">Account</h2>
+                <h2 className="mb-4 text-center font-bold underline-title">Account</h2>
             </div>
             <div>
                 <ul className="flex flex-col">

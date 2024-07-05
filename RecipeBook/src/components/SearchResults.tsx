@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { iRecipe } from '../store/slices/recipeSlice';
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -90,7 +91,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ recipes }) => {
     return (
         <div>
             {recipes.slice(startIndex, endIndex).map((recipe) => (
-                <div key={recipe.id} className='card flex flex-wrap gap-2 p-3 m-8'>
+                <Link key={recipe.id} className='card flex flex-wrap gap-2 p-3 m-8' to={`/recipes/${recipe.id}`}>
                     <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }} className='image flex-shrink-0'>
                     </div>
                     <div className='flex flex-col flex-grow p-2'>
@@ -115,7 +116,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ recipes }) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             ))}
 
             {recipes.length > 0 &&

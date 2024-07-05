@@ -97,7 +97,7 @@ const NewRecipeForm: React.FC = () => {
 
     return (
         <div className="new-recipe-form">
-            <h2 className="my-3 text-center font-bold border-b-2 border-[var(--primary)]">Add New Recipe</h2>
+            <h2 className="my-3 text-center font-bold underline-title">Add New Recipe</h2>
             <form onSubmit={handleSubmit} className='new-recipe-form flex flex-col gap-5'>
                 <label>
                     <span>Recipe Name*</span>

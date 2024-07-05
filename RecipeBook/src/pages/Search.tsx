@@ -63,7 +63,7 @@ export const Search = () => {
         <div>
             <div>
                 <div>
-                    <h2 className="mb-4 text-center font-bold border-b-2 border-[var(--primary)]">Search</h2>
+                    <h2 className="mb-4 text-center font-bold underline-title">Search</h2>
                 </div>
                 <SearchAndFilter onSearch={handleSearch} />
                 <SearchResults recipes={searchResults} dietMap={dietMap} difficultyMap={difficultyMap} />

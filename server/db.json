@@ -351,6 +351,26 @@
       "dietId": "3",
       "difficultyId": "1",
       "image": "/uploads/Pasta-Primavera-f.jpg"
+    },
+    {
+      "id": "1720210686066",
+      "name": "Seadas",
+      "ingredients": [
+        "Honey",
+        " Cheese",
+        " Sugar",
+        " Eggs",
+        " Butter",
+        " Flour",
+        " Salt",
+        " Water",
+        " Oil"
+      ],
+      "instructions": "Prepare the dough, roll it out with a rolling pin, place the cheese inside the dough, fry, and eat it seasoned with honey or sugar.",
+      "cuisineId": "1",
+      "dietId": "2",
+      "difficultyId": "2",
+      "image": "/uploads/1720210686060.jpg"
     }
   ],
   "comments": [
@@ -535,6 +555,13 @@
       "comment": "Fresh and vibrant.",
       "rating": 4,
       "date": "2024-07-02T14:20:00.000Z"
+    },
+    {
+      "recipeId": "1720210686066",
+      "comment": "Tasty!",
+      "rating": 5,
+      "date": "2024-07-05T20:24:57.421Z",
+      "id": "Q8xfdGO"
     }
   ],
   "cuisines": [
