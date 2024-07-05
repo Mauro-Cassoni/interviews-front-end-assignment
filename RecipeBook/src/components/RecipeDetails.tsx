@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { iRecipe } from '../store/slices/recipeSlice';
 import { v4 as uuidv4 } from 'uuid';
+import Loader from './Loader';
+import SuccessMessage from './SuccessMessage';
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -21,6 +23,8 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
     const [comments, setComments] = useState<iComment[]>([]);
     const [newComment, setNewComment] = useState('');
     const [newRating, setNewRating] = useState(1);
+    const [averageRating, setAverageRating] = useState<number | null>(null);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const [dietMap, setDietMap] = useState<{ [key: string]: string }>({});
     const [difficultyMap, setDifficultyMap] = useState<{ [key: string]: string }>({});
@@ -42,6 +46,7 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
             .then(response => response.json())
             .then((data: iComment[]) => {
                 setComments(data);
+                calculateAverageRating(data); // Calcola la media delle recensioni
             })
             .catch(error => {
                 console.error('Error fetching comments:', error);
@@ -107,11 +112,14 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
                 setComments([...comments, data]);
                 setNewComment('');
                 setNewRating(1);
+                calculateAverageRating([...comments, data]);
+                setShowSuccessMessage(true); // Mostra il messaggio di successo
             })
             .catch(error => {
                 console.error('Error adding comment:', error);
             });
     };
+
 
     const renderStars = (rating: number) => {
         return (
@@ -123,17 +131,34 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
         );
     };
 
+    const calculateAverageRating = (comments: iComment[]) => {
+        if (comments.length === 0) {
+            setAverageRating(null);
+            return;
+        }
+        const totalRating = comments.reduce((sum, comment) => sum + comment.rating, 0);
+        const average = totalRating / comments.length;
+        setAverageRating(average);
+    };
+
     if (!recipe) {
-        return <div>Loading...</div>;
+        return <div><Loader /></div>;
     }
 
     return (
-        <div className='recipe-details flex flex-wrap gap-5 p-3 m-8'>
+        <div className='recipe-details flex flex-wrap gap-5 m-8'>
             <div className='name-and-image w-full'>
                 <div className='underline-title'>
                     <h2>{recipe.name}</h2>
                 </div>
                 <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }} className='image flex-shrink-0'></div>
+                <div className='flex justify-center items-center'>
+                    {averageRating !== null && (
+                        <div className='mt-6 text-2xl'>
+                            {renderStars(Math.round(averageRating))}
+                        </div>
+                    )}
+                </div>
             </div>
             <section className='details-section flex flex-col p-2 md:w-1/2'>
                 <div className='flex flex-col justify-between'>
@@ -200,6 +225,12 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
                     <button onClick={handleAddComment} className='button'>Send</button>
                 </div>
             </section>
+            {showSuccessMessage && (
+                <SuccessMessage
+                    onClose={() => setShowSuccessMessage(false)}
+                    text="Comment added successfully!"
+                />
+            )}
         </div>
     );
 };
