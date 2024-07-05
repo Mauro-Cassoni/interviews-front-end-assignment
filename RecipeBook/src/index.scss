@@ -388,23 +388,15 @@ h4 {
     display: flex;
 }
 
-.stars .filled {
+.stars .filled, .rating-select .filled{
     color: var(--primary);
 }
 
-.stars .empty {
-    color: var(--bg);
+.stars .empty, .rating-select .empty {
+    color: var(--text);
 }
 
 .rating-select {
     display: flex;
     cursor: pointer;
-}
-
-.rating-select .filled {
-    color: var(--primary);
-}
-
-.rating-select .empty {
-    color: var(--bg);
 }
