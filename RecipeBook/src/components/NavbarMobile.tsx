@@ -47,6 +47,8 @@ export default function NavbarMobile() {
                 return 'RecipeBook - Recipes';
             case '/search':
                 return 'RecipeBook - Search';
+            case '/account':
+                return 'RecipeBook - Account';
             default:
                 return 'RecipeBook';
         }
@@ -54,7 +56,7 @@ export default function NavbarMobile() {
 
     return (
         <div className="h-full w-full flex items-center px-2 py-5 border-t-2 border-[var(--primary)] bg-[var(--bg)] justify-center relative">
-            <div className='absolute left-[1svw] top-[-93svh]'>
+            <div className='absolute left-[2svw] top-[-92svh]'>
                 <ThemeButton onClick={changeTheme} className='border-[1px] border-[var(--primary)]' />
             </div>
             <ul className="navbar flex gap-5">
@@ -67,7 +69,8 @@ export default function NavbarMobile() {
                 <li className={isActive('/search')}>
                     <Link to={'/search'}>Search</Link>
                 </li>
-                <li className='self-end'>
+                <li className={isActive('/account')}>
+                    <Link to={'/account'}>Account</Link>
                 </li>
             </ul>
         </div>

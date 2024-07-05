@@ -48,6 +48,10 @@ export default function Navbar() {
                 return 'RecipeBook - Recipes';
             case '/search':
                 return 'RecipeBook - Search';
+            case '/account':
+                return 'RecipeBook - Account';
+            case '/account/new-recipe':
+                return 'RecipeBook - New Recipe';
             default:
                 return 'RecipeBook';
         }
@@ -68,7 +72,12 @@ export default function Navbar() {
                 <li className='self-end'>
                 </li>
             </ul>
-            <div className=''>
+            <div className='flex items-center gap-5 navbar'>
+                <ul>
+                    <li className={isActive('/account')}>
+                        <Link to={'/account'}>Account</Link>
+                    </li>
+                </ul>
                 <ThemeButton onClick={changeTheme} />
             </div>
         </div>

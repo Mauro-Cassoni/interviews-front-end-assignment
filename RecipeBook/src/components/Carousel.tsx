@@ -30,7 +30,7 @@ const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
     const error = useSelector(selectError);
 
     useEffect(() => {
-        dispatch(fetchRecipes());
+        dispatch(fetchRecipes(1,50));
     }, [dispatch]);
 
     const settings = {
@@ -56,7 +56,7 @@ const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
 
     return (
         <div className="slider mb-14">
-            <h2 className="my-3 text-center font-bold border-b-2 border-[var(--primary)]">{name} Recipes</h2>
+            <h2 className="my-3 text-center font-bold underline-title">{name} Recipes</h2>
             <Slider {...settings}>
                 {recipes.map((recipe: iRecipe) => (
                     <div key={recipe.id}>

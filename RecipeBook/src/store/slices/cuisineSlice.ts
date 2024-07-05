@@ -52,7 +52,7 @@ const cuisineSlice = createSlice({
             })
             .addCase(fetchCuisines.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.error.message || 'Failed to fetch cuisines';
+                state.error = action.error.message || 'something went wrong, try reloading the page';
             });
     }
 });

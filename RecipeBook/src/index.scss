@@ -46,7 +46,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     color: var(--primary-hover);
     font-family: "Space Grotesk", sans-serif;
 }
@@ -63,8 +64,21 @@ h3 {
     font-size: 1.4rem;
 }
 
+h4 {
+    font-size: 1.2rem;
+    color: var(--primary-hover);
+}
 
-.button {
+.underline-title {
+    border-bottom: 2px solid var(--primary-hover);
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.button,
+.buttonImg {
     transition: 0.5s;
     background-color: var(--primary);
     border-radius: 15px;
@@ -78,6 +92,8 @@ h3 {
 
 // Navbar 
 .navbar {
+    transition: 0.5s;
+
     & li {
         cursor: pointer;
 
@@ -98,7 +114,7 @@ h3 {
     transition: 0.5s;
     border: 0px;
 
-    &:hover{
+    &:hover {
         transform: scale(1.02);
         box-shadow: 0px 0px 10px 4px var(--primary);
     }
@@ -250,4 +266,145 @@ h3 {
         outline: none;
     }
 
+}
+
+// New Recipe Form
+.new-recipe-form {
+    label {
+
+        span {
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea,
+        option,
+        select {
+            color: var(--bg-theme);
+            border-radius: 15px;
+            padding: 10px;
+            border: 1px solid var(--primary);
+        }
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buttonImg {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .textImage {
+        border: 1px solid var(--primary);
+        padding: 9px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
+
+// Recipe Details
+.recipe-details {
+
+    .name-and-image,
+    .details-section,
+    .comments-section {
+        background-color: var(--card);
+        border-radius: 15px;
+        padding: 32px;
+    }
+
+    .name-and-image {
+        padding-top: 12px;
+    }
+
+    h2 {
+        font-weight: bold;
+    }
+
+    .image {
+        height: 185px;
+        width: 100%;
+        border-radius: 15px;
+        border: 1px solid var(--primary);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @media (min-width: 375px) {
+            height: 235px;
+        }
+
+        @media (min-width: 425px) {
+            height: 275px;
+        }
+
+        @media (min-width: 768px) {
+            height: 300px;
+        }
+
+        @media (min-width: 768px) {
+            height: 500px;
+        }
+    }
+
+    span {
+        color: var(--primary);
+    }
+
+    .details-section {
+        flex-grow: 1;
+
+        @media (min-width:1024px) {
+            flex-grow: 0;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    }
+
+    .comments-section {
+        flex-grow: 1;
+    }
+
+    textarea {
+        color: var(--bg-theme);
+        border-radius: 15px;
+        padding: 10px;
+        border: 1px solid var(--primary);
+        width: 100%;
+    }
+
+    .button{
+        margin-top: 20px;
+    }
+
+}
+
+// Stars 
+.stars {
+    display: flex;
+}
+
+.stars .filled {
+    color: gold;
+}
+
+.stars .empty {
+    color: lightgray;
+}
+
+.rating-select {
+    display: flex;
+    cursor: pointer;
+}
+
+.rating-select .filled {
+    color: gold;
+}
+
+.rating-select .empty {
+    color: lightgray;
 }
