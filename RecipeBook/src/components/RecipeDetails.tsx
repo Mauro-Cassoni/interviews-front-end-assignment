@@ -113,6 +113,16 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
             });
     };
 
+    const renderStars = (rating: number) => {
+        return (
+            <div className="stars">
+                {[...Array(5)].map((_, index) => (
+                    <span key={index} className={index < rating ? 'filled' : 'empty'}>★</span>
+                ))}
+            </div>
+        );
+    };
+
     if (!recipe) {
         return <div>Loading...</div>;
     }
@@ -120,21 +130,25 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
     return (
         <div className='recipe-details flex flex-wrap gap-5 p-3 m-8'>
             <div className='name-and-image w-full'>
-                <div className='mb-4 text-center w-full border-b-2 border-[var(--primary)]'>
+                <div className='underline-title'>
                     <h2>{recipe.name}</h2>
                 </div>
                 <div style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }} className='image flex-shrink-0'></div>
             </div>
-            <div className='details-section flex flex-col p-2 md:w-1/2'>
+            <section className='details-section flex flex-col p-2 md:w-1/2'>
                 <div className='flex flex-col justify-between'>
-                    <span className='little-title'>Details:</span>
+                    <div className='underline-title'>
+                        <h4>Details:</h4>
+                    </div>
                     <div className='flex flex-col mb-4'>
                         <p><span>Cuisine: </span> {cuisineMap[recipe.cuisineId]}</p>
                         <p><span>Diet: </span> {dietMap[recipe.dietId]}</p>
                         <p><span>Difficulty: </span> {difficultyMap[recipe.difficultyId]}</p>
                     </div>
                     <div className='flex flex-col mb-4'>
-                        <span className='little-title'>Ingredients:</span>
+                        <div className='underline-title'>
+                            <h4>Ingredients:</h4>
+                        </div>
                         <ul>
                             {recipe.ingredients.map((ingredient: string) => (
                                 <li key={uuidv4()}>{ingredient}</li>
@@ -142,41 +156,50 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
                         </ul>
                     </div>
                     <div className='flex flex-col mb-4'>
-                        <span className='little-title'>Instructions:</span>
+                        <div className='underline-title'>
+                            <h4>Instructions:</h4>
+                        </div>
                         <p>{recipe.instructions}</p>
                     </div>
                 </div>
-            </div>
-            <div className='comments-section'>
+            </section>
+            <section className='comments-section'>
                 <div className='underline-title'>
-                    <span className='little-title'>Comments:</span>
+                    <h4>Comments</h4>
                 </div>
                 <ul>
                     {comments.map((comment) => (
-                        <li key={comment.id}>
-                            <p>{comment.comment}</p>
-                            <p>Rating: {comment.rating}</p>
-                            <p>Date: {new Date(comment.date).toLocaleDateString()}</p>
+                        <li key={comment.id} className='pb-5'>
+                            <span>Comment: </span>
+                            <p className='ms-5'>{comment.comment}</p>
+                            <p><span>Rating: </span>{renderStars(comment.rating)}</p>
+                            <p className='text-xs'><span>Date: </span>{new Date(comment.date).toLocaleDateString()}</p>
                         </li>
                     ))}
                 </ul>
                 <div className='add-comment'>
-                    <h4>Add a Comment</h4>
+                    <div className='underline-title'>
+                        <h4>Add a Comment</h4>
+                    </div>
                     <textarea
                         value={newComment}
                         onChange={(e) => setNewComment(e.target.value)}
                         placeholder='Write your comment here...'
                     />
-                    <select
-                        value={newRating}
-                        onChange={(e) => setNewRating(parseInt(e.target.value))}>
-                        {[1, 2, 3, 4, 5].map(rating => (
-                            <option key={rating} value={rating}>{rating}</option>
+                    <div className="rating-select">
+                        {[...Array(5)].map((_, index) => (
+                            <span
+                                key={index}
+                                className={index < newRating ? 'filled' : 'empty'}
+                                onClick={() => setNewRating(index + 1)}
+                            >
+                                ★
+                            </span>
                         ))}
-                    </select>
-                    <button onClick={handleAddComment}>Submit</button>
+                    </div>
+                    <button onClick={handleAddComment} className='button'>Send</button>
                 </div>
-            </div>
+            </section>
         </div>
     );
 };
