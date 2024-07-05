@@ -46,7 +46,7 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
             .then(response => response.json())
             .then((data: iComment[]) => {
                 setComments(data);
-                calculateAverageRating(data); // Calcola la media delle recensioni
+                calculateAverageRating(data);
             })
             .catch(error => {
                 console.error('Error fetching comments:', error);
@@ -113,7 +113,7 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
                 setNewComment('');
                 setNewRating(1);
                 calculateAverageRating([...comments, data]);
-                setShowSuccessMessage(true); // Mostra il messaggio di successo
+                setShowSuccessMessage(true);
             })
             .catch(error => {
                 console.error('Error adding comment:', error);
@@ -194,11 +194,10 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
                 </div>
                 <ul>
                     {comments.map((comment) => (
-                        <li key={comment.id} className='pb-5'>
-                            <span>Comment: </span>
-                            <p className='ms-5'>{comment.comment}</p>
-                            <p><span>Rating: </span>{renderStars(comment.rating)}</p>
-                            <p className='text-xs'><span>Date: </span>{new Date(comment.date).toLocaleDateString()}</p>
+                        <li key={comment.id} className='p-5 m-5 border-[1px] border-[var(--primary)] rounded-2xl'>
+                            <span>Comment:</span> <p className='text-[var(--text)] inline'>{comment.comment}</p>
+                            <p className='flex gap-2'><span>Rating: </span>{renderStars(comment.rating)}</p>
+                            <p className='text-xs'><span>Date:</span>{new Date(comment.date).toLocaleDateString()}</p>
                         </li>
                     ))}
                 </ul>
@@ -207,6 +206,7 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
                         <h4>Add a Comment</h4>
                     </div>
                     <textarea
+                        required
                         value={newComment}
                         onChange={(e) => setNewComment(e.target.value)}
                         placeholder='Write your comment here...'
@@ -222,7 +222,13 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
                             </span>
                         ))}
                     </div>
-                    <button onClick={handleAddComment} className='button'>Send</button>
+                    <button
+                        onClick={handleAddComment}
+                        className='button disabled:opacity-50'
+                        disabled={!newComment.trim()}
+                    >
+                        Send
+                    </button>
                 </div>
             </section>
             {showSuccessMessage && (

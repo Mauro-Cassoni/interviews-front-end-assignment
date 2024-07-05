@@ -6,6 +6,8 @@ import { AppDispatch, RootState } from "../store/store";
 import Slider from "react-slick";
 import { iDifficulty } from "../store/slices/difficultySlice";
 import Loader from "./Loader";
+import { Link } from "react-router-dom";
+
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const selectFilteredRecipes = createSelector(
@@ -59,12 +61,12 @@ const Carousel: React.FC<iDifficulty> = ({ id, name }) => {
             <h2 className="my-3 text-center font-bold underline-title">{name} Recipes</h2>
             <Slider {...settings}>
                 {recipes.map((recipe: iRecipe) => (
-                    <div key={recipe.id}>
+                    <Link key={recipe.id} to={`/recipes/${recipe.id}`}>
                         <div className="image" style={{ backgroundImage: `url(${apiBaseUrl}${recipe.image})` }}>
                             <div className="bg" />
                             <h2 className="name">{truncateText(recipe.name, 19)}</h2>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </Slider>
         </div>
