@@ -106,20 +106,20 @@ comments.
 
 ### Server Configuration
 1. Go to the 'server' folder and run the command:
-npm i
+**npm i**
 
 ### Frontend Configuration
 1. Go to the 'RecipeBook' folder and create a .env file with the following content:
-VITE_API_BASE_URL=http://localhost:8080
+**VITE_API_BASE_URL=http://localhost:8080**
 
 2. Install dependencies:
-npm i
+**npm i**
 
 3. Start the project in the '/RecipeBook' directory in a terminal:
-npm run dev
+**npm run dev**
 
 4. In a second terminal, in the '/RecipeBook' directory, start the server:
-npm run server
+**npm run server**
 
 # RecipeBook
 
@@ -164,20 +164,20 @@ interviews-front-end-assignment/
 
 ### Configurazione del server
 1. Vai nella cartella 'server' ed esegui il comando: 
-npm i
+**npm i**
 
 ### Configurazione del frontend
 1. Vai nella cartella 'RecipeBook' e crea un file .env con il seguente contenuto:
-VITE_API_BASE_URL=http://localhost:8080
+**VITE_API_BASE_URL=http://localhost:8080**
 
 2. Installa le dipendenze:
-npm i
+**npm i**
 
 3. Avvia il progetto nella directory '/RecipeBook' in un terminale:
-npm run dev
+**npm run dev**
 
 4. In un secondo terminale,  nella directory '/RecipeBook', avvia il server:
-npm run server
+**npm run server**
 
 # RecipeBook
 
