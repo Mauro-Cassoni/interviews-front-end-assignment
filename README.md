@@ -107,7 +107,7 @@ comments.
 ### Server Configuration
 1. Go to the 'server' folder and run the command:  
 ```bash
-npm i**
+npm i
 ```
 
 ### Frontend Configuration
@@ -148,6 +148,7 @@ The main objective of the project is to provide a user-friendly platform for man
 - **Utility**: uuid, reselect
 
 ## Project Structure
+```markdown
 interviews-front-end-assignment/  
 │   ├── server/  
 │   ├── ...  
@@ -165,7 +166,8 @@ interviews-front-end-assignment/
           │        └── ...  
           ├── .env  
           ├── package.json  
-          └── ...  
+          └── ...
+```
 
 
 ## Italiano:
@@ -216,6 +218,7 @@ L'obiettivo principale del progetto è fornire una piattaforma user-friendly per
 - **Utility**: uuid, reselect
 
 ## Struttura del progetto
+```markdown
 interviews-front-end-assignment/  
 │   ├── server/  
 │   ├── ...  
@@ -233,5 +236,6 @@ interviews-front-end-assignment/
           │        └── ...  
           ├── .env  
           ├── package.json  
-          └── ...  
+          └── ...
+```
 
