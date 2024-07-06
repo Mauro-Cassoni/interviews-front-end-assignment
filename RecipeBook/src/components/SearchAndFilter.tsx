@@ -55,7 +55,7 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
     }, []);
 
     const handleSearch = () => {
-        if (query.length >= 3 || Object.values(filters).some(value => value)) {
+        if (query.length >= 0 || Object.values(filters).some(value => value)) {
             onSearch(query, filters);
         }
     };
