@@ -30,6 +30,11 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
     const [difficultyMap, setDifficultyMap] = useState<{ [key: string]: string }>({});
     const [cuisineMap, setCuisineMap] = useState<{ [key: string]: string }>({});
 
+    const formatDietName = (name: string): string => {
+        const parts = name.split('-').map((part, index) => index === 0 ? part.trim() : part.trim().toLowerCase());
+        return parts.join(' ');
+    };
+
     useEffect(() => {
         fetch(`${apiBaseUrl}/recipes/${recipeId}`)
             .then(response => response.json())
@@ -57,13 +62,15 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
         fetch(`${apiBaseUrl}/diets`)
             .then(response => response.json())
             .then(data => {
-                const map: { [key: string]: string } = {};
-                data.forEach((diet: { id: number, name: string }) => {
-                    map[diet.id] = diet.name;
+                const newDietsMap: { [key: string]: string } = {};
+                data.forEach((diet: { id: string, name: string }) => {
+                    newDietsMap[diet.id] = formatDietName(diet.name);
                 });
-                setDietMap(map);
+                setDietMap(newDietsMap);
             })
-            .catch(error => console.error('Error fetching diets:', error));
+            .catch(error => {
+                console.error('Error loading diet data:', error);
+            });
     }, []);
 
     useEffect(() => {
@@ -196,8 +203,8 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipeId }) => {
                     {comments.map((comment) => (
                         <li key={comment.id} className='p-5 m-5 border-[1px] border-[var(--primary)] rounded-2xl'>
                             <span>Comment:</span> <p className='text-[var(--text)] inline'>{comment.comment}</p>
-                            <p className='flex gap-2'><span>Rating: </span>{renderStars(comment.rating)}</p>
-                            <p className='text-xs'><span>Date:</span>{new Date(comment.date).toLocaleDateString()}</p>
+                            <div className='flex gap-2'><span>Rating: </span>{renderStars(comment.rating)}</div>
+                            <div className='text-xs'><span>Date:</span>{new Date(comment.date).toLocaleDateString()}</div>
                         </li>
                     ))}
                 </ul>
