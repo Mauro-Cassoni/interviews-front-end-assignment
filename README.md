@@ -100,4 +100,142 @@ comments.
 
 ## How to run
 
-...
+## English:
+
+## Installation
+
+### Server Configuration
+1. Go to the 'server' folder and run the command:  
+```bash
+npm i
+```
+
+### Frontend Configuration
+1. Go to the 'RecipeBook' folder and create a .env file with the following content:  
+```copy
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+2. Install dependencies:
+```bash
+npm i
+```
+
+3. Start the project in the '/RecipeBook' directory in a terminal:  
+```bash
+npm run dev
+```
+
+4. In a second terminal, in the '/RecipeBook' directory, start the server:  
+```bash
+npm run server
+```
+
+# RecipeBook
+
+## Project Description
+RecipeBook is a recipe application that utilizes a local server to allow users to view, add, and review recipes.
+
+## Objectives
+The main objective of the project is to provide a user-friendly platform for managing recipes. Users can browse through various recipes, add new ones, and leave reviews.
+
+## Technologies Used
+- **Frontend**: React + Vite, TypeScript
+- **State Management**: @reduxjs/toolkit, react-redux
+- **Routing**: react-router-dom
+- **HTTP Client**: axios
+- **UI Components**: react-icons, react-slick, slick-carousel
+- **Utility**: uuid, reselect
+
+## Project Structure
+```markdown
+interviews-front-end-assignment/  
+│   ├── server/  
+│   ├── ...  
+│   └── package.json  
+└──RecipeBook/  
+          │   ├── public/  
+          │   ├── node_modules/  
+          │   └── src/  
+          │        ├── components/  
+          │        ├── pages/  
+          │        ├── store/  
+          │        │     └── slices/  
+          │        ├── App.tsx  
+          │        ├── main.tsx  
+          │        └── ...  
+          ├── .env  
+          ├── package.json  
+          └── ...
+```
+
+
+## Italiano:
+
+## Installazione
+
+### Configurazione del server
+1. Vai nella cartella 'server' ed esegui il comando:   
+```bash
+npm i
+```
+
+### Configurazione del frontend
+1. Vai nella cartella 'RecipeBook' e crea un file .env con il seguente contenuto:  
+```copia
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+2. Installa le dipendenze:  
+```bash
+npm i
+```
+
+3. Avvia il progetto nella directory '/RecipeBook' in un terminale:  
+```bash
+npm run dev
+```
+
+4. In un secondo terminale,  nella directory '/RecipeBook', avvia il server:  
+```bash
+npm run server
+```
+
+# RecipeBook
+
+## Descrizione del progetto
+RecipeBook è un'applicazione di ricette che sfrutta un server locale per permettere agli utenti di visualizzare, aggiungere e recensire ricette.
+
+## Obiettivi
+L'obiettivo principale del progetto è fornire una piattaforma user-friendly per la gestione delle ricette. Gli utenti possono navigare tra diverse ricette, aggiungerne di nuove e lasciare recensioni.
+
+## Tecnologie utilizzate
+- **Frontend**: React + Vite, TypeScript
+- **State Management**: @reduxjs/toolkit, react-redux
+- **Routing**: react-router-dom
+- **HTTP Client**: axios
+- **UI Components**: react-icons, react-slick, slick-carousel
+- **Utility**: uuid, reselect
+
+## Struttura del progetto
+```markdown
+interviews-front-end-assignment/  
+│   ├── server/  
+│   ├── ...  
+│   └── package.json  
+└──RecipeBook/  
+          │   ├── public/  
+          │   ├── node_modules/  
+          │   └── src/  
+          │        ├── components/  
+          │        ├── pages/  
+          │        ├── store/  
+          │        │     └── slices/  
+          │        ├── App.tsx  
+          │        ├── main.tsx  
+          │        └── ...  
+          ├── .env  
+          ├── package.json  
+          └── ...
+```
+
