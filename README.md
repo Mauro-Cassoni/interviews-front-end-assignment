@@ -109,16 +109,16 @@ comments.
 **npm i**
 
 ### Frontend Configuration
-1. Go to the 'RecipeBook' folder and create a .env file with the following content:
+1. Go to the 'RecipeBook' folder and create a .env file with the following content:  
 **VITE_API_BASE_URL=http://localhost:8080**
 
 2. Install dependencies:
 **npm i**
 
-3. Start the project in the '/RecipeBook' directory in a terminal:
+3. Start the project in the '/RecipeBook' directory in a terminal:  
 **npm run dev**
 
-4. In a second terminal, in the '/RecipeBook' directory, start the server:
+4. In a second terminal, in the '/RecipeBook' directory, start the server:  
 **npm run server**
 
 # RecipeBook
@@ -138,24 +138,24 @@ The main objective of the project is to provide a user-friendly platform for man
 - **Utility**: uuid, reselect
 
 ## Project Structure
-interviews-front-end-assignment/
-│   ├── server/
-│   ├── ...
-│   └── package.json
-└──RecipeBook/
-          │   ├── public/
-          │   ├── node_modules/
-          │   └── src/
-          │        ├── components/
-          │        ├── pages/
-          │        ├── store/
-          │        │     └── slices/
-          │        ├── App.tsx
-          │        ├── main.tsx
-          │        └── ...
-          ├── .env
-          ├── package.json
-          └── ...
+interviews-front-end-assignment/  
+│   ├── server/  
+│   ├── ...  
+│   └── package.json  
+└──RecipeBook/  
+          │   ├── public/  
+          │   ├── node_modules/  
+          │   └── src/  
+          │        ├── components/  
+          │        ├── pages/  
+          │        ├── store/  
+          │        │     └── slices/  
+          │        ├── App.tsx  
+          │        ├── main.tsx  
+          │        └── ...  
+          ├── .env  
+          ├── package.json  
+          └── ...  
 
 
 ## Italiano:
@@ -163,20 +163,20 @@ interviews-front-end-assignment/
 ## Installazione
 
 ### Configurazione del server
-1. Vai nella cartella 'server' ed esegui il comando: 
+1. Vai nella cartella 'server' ed esegui il comando:   
 **npm i**
 
 ### Configurazione del frontend
-1. Vai nella cartella 'RecipeBook' e crea un file .env con il seguente contenuto:
+1. Vai nella cartella 'RecipeBook' e crea un file .env con il seguente contenuto:  
 **VITE_API_BASE_URL=http://localhost:8080**
 
-2. Installa le dipendenze:
+2. Installa le dipendenze:  
 **npm i**
 
-3. Avvia il progetto nella directory '/RecipeBook' in un terminale:
+3. Avvia il progetto nella directory '/RecipeBook' in un terminale:  
 **npm run dev**
 
-4. In un secondo terminale,  nella directory '/RecipeBook', avvia il server:
+4. In un secondo terminale,  nella directory '/RecipeBook', avvia il server:  
 **npm run server**
 
 # RecipeBook
@@ -196,22 +196,22 @@ L'obiettivo principale del progetto è fornire una piattaforma user-friendly per
 - **Utility**: uuid, reselect
 
 ## Struttura del progetto
-interviews-front-end-assignment/
-│   ├── server/
-│   ├── ...
-│   └── package.json
-└──RecipeBook/
-          │   ├── public/
-          │   ├── node_modules/
-          │   └── src/
-          │        ├── components/
-          │        ├── pages/
-          │        ├── store/
-          │        │     └── slices/
-          │        ├── App.tsx
-          │        ├── main.tsx
-          │        └── ...
-          ├── .env
-          ├── package.json
-          └── ...
+interviews-front-end-assignment/  
+│   ├── server/  
+│   ├── ...  
+│   └── package.json  
+└──RecipeBook/  
+          │   ├── public/  
+          │   ├── node_modules/  
+          │   └── src/  
+          │        ├── components/  
+          │        ├── pages/  
+          │        ├── store/  
+          │        │     └── slices/  
+          │        ├── App.tsx  
+          │        ├── main.tsx  
+          │        └── ...  
+          ├── .env  
+          ├── package.json  
+          └── ...  
 
