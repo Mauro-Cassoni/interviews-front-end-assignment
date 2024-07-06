@@ -8,6 +8,7 @@ import NavbarMobile from './components/NavbarMobile';
 import { Account } from './pages/Account';
 import NewRecipeForm from './components/NewRecipeForm';
 import RecipeDetailsPage from './pages/RecipeDetailsPage';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/account" element={<Account />} />
             <Route path="/account/new-recipe" element={<NewRecipeForm />} />
             <Route path="/recipes/:recipeId" element={<RecipeDetailsPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
           <div className='w-full h-[8svh] min-h-10 mt-8 md:hidden' />
