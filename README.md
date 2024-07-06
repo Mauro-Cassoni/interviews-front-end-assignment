@@ -100,7 +100,7 @@ comments.
 
 ## How to run
 
-## English
+## English:
 
 ## Installation
 
@@ -158,7 +158,7 @@ interviews-front-end-assignment/
           └── ...
 
 
-## Italiano
+## Italiano:
 
 ## Installazione
 
