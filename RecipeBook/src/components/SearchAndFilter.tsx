@@ -42,7 +42,7 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
                     axios.get(`${apiBaseUrl}/diets`),
                     axios.get(`${apiBaseUrl}/difficulties`),
                 ]);
-
+    
                 setCuisines(cuisinesRes.data);
                 setDiets(dietsRes.data);
                 setDifficulties(difficultiesRes.data);
@@ -50,7 +50,7 @@ const SearchAndFilter: React.FC<SearchAndFilterProps> = ({ onSearch }) => {
                 console.error('Error fetching filter data:', error);
             }
         };
-
+    
         fetchData();
     }, []);
 
