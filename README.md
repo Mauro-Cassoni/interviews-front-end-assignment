@@ -105,7 +105,7 @@ comments.
 ## Installation
 
 ### Server Configuration
-1. Go to the 'server' folder and run the command:
+1. Go to the 'server' folder and run the command:  
 **npm i**
 
 ### Frontend Configuration
